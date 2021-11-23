@@ -65,6 +65,7 @@ jobs:
           }
         ' &> gh_response.json
         echo "HELLO!"
+        cat gh_response.json
         DETEKT_RELEASE_SHA=$(jq --raw-output '.data.repository.release.tagCommit.oid' gh_response.json)
         echo $DETEKT_RELEASE_SHA
         if $DETEKT_RELEASE_SHA != "37f0a1d006977512f1f216506cd695039607c3e5"

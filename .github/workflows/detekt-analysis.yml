@@ -67,7 +67,7 @@ jobs:
         cat gh_response.json
         DETEKT_DOWNLOAD_URL=$(jq --raw-output '.data.repository.release.releaseAssets.nodes[0].downloadUrl' gh_response.json)
         echo $DETEKT_DOWNLOAD_URL
-        DETEKT_RELEASE_SHA=$(jq --raw-output '.data.repository.release.tagCommit.oid' gh_response.json)
+        DETEKT_RELEASE_SHA=$(jq --raw-output '.data.repository.release.releaseAssets.tagCommit.oid' gh_response.json)
         if $DETEKT_RELEASE_SHA != "37f0a1d006977512f1f216506cd695039607c3e5"
           exit 1
 
